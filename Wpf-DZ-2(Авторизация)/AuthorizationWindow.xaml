@@ -1,0 +1,89 @@
+﻿<Window x:Class="Wpf_DZ_2_Заполнение_макета_.AuthorizationWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Wpf_DZ_2_Заполнение_макета_"
+        mc:Ignorable="d"
+        Title="AuthorizationWindow" Height="450" Width="450"
+        MinHeight="350"
+        MinWidth="350">
+    
+    <!--<Window.DataContext>
+        <x:Array Type="SolidColorBrush">
+            <SolidColorBrush Color="BlanchedAlmond"/>
+            <SolidColorBrush Color="Blue"/>            
+        </x:Array>        
+    </Window.DataContext>
+
+    <Window.Resources>
+        <SolidColorBrush x:Key="baseColor" Color="Green"/>
+    </Window.Resources>-->
+    
+    
+    
+    <Grid Grid.IsSharedSizeScope="True">
+<!--яяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяя-->
+        <TextBlock VerticalAlignment="Top"
+                   HorizontalAlignment="Center"
+                   Text="{Binding Path=Message,
+                          UpdateSourceTrigger=PropertyChanged}"/>
+
+        <StackPanel MaxWidth="450"
+                    VerticalAlignment="Center"
+                    Margin="50 0">
+<!--яяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяя-->
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition SharedSizeGroup="group1"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Label Content="Login  "/>
+                <TextBox Grid.Column="1"
+                         Text="{Binding Path=LoginUser,
+                                Mode=TwoWay,
+                                UpdateSourceTrigger=LostFocus}">                    
+                </TextBox>
+            </Grid>
+<!--яяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяя-->
+            <Grid Margin="0 15 0 0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition SharedSizeGroup="group1"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Label Content="Password"/>
+                <PasswordBox Grid.Column="1" 
+                             x:Name="pwdBox"/>
+            </Grid>
+<!--яяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяя-->
+            <Button Content="Enter"                    
+                    Height="50"
+                    Margin="58 15 58 0"
+                    Click="Button_Click"
+                    IsDefault="True"
+                    IsEnabled="{Binding Path=IsEnabledAuth}"
+                    />
+<!--яяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяя-->
+            <Label HorizontalAlignment="Center">
+                <TextBlock>
+                    <Hyperlink>
+                        Forgot Password?
+                    </Hyperlink>
+                </TextBlock>
+            </Label>
+<!--яяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяя-->           
+            
+        </StackPanel>
+
+        <TextBlock VerticalAlignment="Bottom"
+                   HorizontalAlignment="Center" 
+                   Text="{Binding Path=UserName,
+                          StringFormat='User {0} logged!',
+                          Mode=OneWay,
+                          UpdateSourceTrigger=PropertyChanged,
+                          TargetNullValue='Log in please'}">           
+        </TextBlock>
+        
+        
+    </Grid>
+</Window>
